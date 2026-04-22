@@ -1,0 +1,164 @@
+/* Reset and Base Font */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* 1. Dynamic Mesh Gradient Background */
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(-45deg, #FF3CAC, #784BA0, #2B86C5, #00DBDE);
+    background-size: 400% 400%;
+    animation: gradientMove 12s ease infinite;
+    overflow: hidden;
+}
+
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* 2. Glassmorphism Container */
+.todo-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 25px;
+    width: 380px;
+    padding: 40px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    animation: slideUp 0.8s ease-out;
+}
+
+@keyframes slideUp {
+    from { transform: translateY(50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+h2 {
+    color: white;
+    margin-bottom: 25px;
+    font-weight: 300;
+    letter-spacing: 3px;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+/* 3. Input Group Styling */
+.input-group {
+    display: flex;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 6px;
+    border-radius: 15px;
+    margin-bottom: 25px;
+    transition: 0.3s;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.input-group:focus-within {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.02);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    padding: 10px 15px;
+    color: white;
+    font-size: 1rem;
+}
+
+input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+#add-btn {
+    background: white;
+    color: #784BA0;
+    border: none;
+    padding: 0 20px;
+    border-radius: 12px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#add-btn:hover {
+    background: #fdfdfd;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
+    transform: rotate(90deg); /* Small dynamic twist */
+}
+
+/* 4. List Items */
+#todo-list {
+    list-style: none;
+    max-height: 280px;
+    overflow-y: auto;
+    padding-right: 5px;
+}
+
+/* Custom Scrollbar for Glass Effect */
+#todo-list::-webkit-scrollbar { width: 4px; }
+#todo-list::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.3); border-radius: 10px; }
+
+li {
+    background: rgba(255, 255, 255, 0.1);
+    margin-bottom: 12px;
+    padding: 12px 15px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    animation: fadeIn 0.4s ease-in-out;
+    border-left: 4px solid #00DBDE;
+    transition: 0.3s;
+}
+
+li:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateX(8px);
+}
+
+.task-text {
+    flex: 1;
+    text-align: left;
+    cursor: pointer;
+}
+
+.completed .task-text {
+    text-decoration: line-through;
+    opacity: 0.4;
+}
+
+.delete-btn {
+    background: rgba(255, 75, 43, 0.2);
+    color: #ffb4b4;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    margin-left: 10px;
+}
+
+.delete-btn:hover {
+    background: #ff4b2b;
+    color: white;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
